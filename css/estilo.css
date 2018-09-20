@@ -9,13 +9,11 @@ body:focus {
     outline: none;
 }
 
-table{
-     border-collapse: collapse;
-      width: 80%;
-      }
- th, td {text-align: left;padding: 8px;}
+table{border-collapse: collapse;width: 100%;font-size: 20px;color: #3434ff;}
+  td {text-align: left;padding: 8px;}
   tr:nth-child(even){background-color: #eeeeee;}
-input[type=date]{display: block;}
+input[type=date]{display: block;margin: 0 0 8px 2px; border: 1px solid; border-radius: 2px;-moz-border-radius: 2px;-webkit-border-radius: 2px;}
+input[type=time]{display: block;margin: 0 0 8px 2px; border: 1px solid; border-radius: 2px;-moz-border-radius: 2px;-webkit-border-radius: 2px;}
 input[type=text]{
                  width: 95%;
                  height: 25px;
@@ -33,7 +31,6 @@ input[type=text]{
 input[type=text]:hover, textarea:hover{ 
          background: #eeeeff; 
                                        }
-input[type=submit]{border: 0;color: #ffffff;background: #0489b1;cursor: pointer;font-size: 16px;}
 
 #form{margin: 5px  5px 0 5px;}
 #acesso_foto{
@@ -46,8 +43,48 @@ input[type=submit]{border: 0;color: #ffffff;background: #0489b1;cursor: pointer;
         -webkit-box-shadow: 1px 1px 3px #333333;
           } 
 
+.btn_submit{
+ font-size: small;
+  background: #0489b1;
+   color: #eeeeee;
+  font-weight: bold;
+ cursor: pointer;
+border-radius: 5px;
+          }
+.btn_submit:hover{
+background: #0000ff;
+                 }
+.btn_submit:disabled{background: #dddddd;}
+
+    .flex-child{
+       margin-left:5px;
+       padding: 5px;
+               }
+
+  #div_es{
+            padding:  0 10px 0 10px;
+             border-radius: 5px;
+           position: absolute; /* posição absoluta ao elemento pai, neste caso o BODY */
+        /* Posiciona no meio, tanto em relação a esquerda como ao topo */
+        display:none;
+        left: 50%; 
+        top: 50%;
+        width: 300px; /* Largura da DIV */
+        height: 240px; /* Altura da DIV */
+        /* A margem a esquerda deve ser menos a metade da largura */
+        /* A margem ao topo deve ser menos a metade da altura */
+        /* Fazendo isso, centralizará a DIV */
+        margin-left: -150px;
+        margin-top: -125px;
+        color: #222;
+        border: 8px solid #323232;
+        text-align: center; /* Centraliza o texto */
+        z-index: 1000; /* Faz com que fique sobre todos os elementos da página */
+        background: #eeeeee;
+             }
+
 #tirar_foto{
-         position: absolute; /* posição absoluta ao elemento pai, neste caso o BODY */
+        position: absolute; /* posição absoluta ao elemento pai, neste caso o BODY */
         /* Posiciona no meio, tanto em relação a esquerda como ao topo */
         display:none;
         left: 50%; 
@@ -60,20 +97,23 @@ input[type=submit]{border: 0;color: #ffffff;background: #0489b1;cursor: pointer;
         margin-left: -150px;
         margin-top: -125px;
         color: #FFF;
+        border: 8px solid #454545;
         text-align: center; /* Centraliza o texto */
         z-index: 1000; /* Faz com que fique sobre todos os elementos da página */
        }
-fieldset{margin: 5px 2px 2px 2px;
-        border: 1px solid #3434dd;
+fieldset{
+        margin: 5px 2px 2px 2px;
+        border: 2px solid #3434dd;
         box-shadow: 1px 1px 3px #0489b1;    
         -moz-box-shadow: 1px 1px 3px #0489b1;
         -webkit-box-shadow: 1px 1px 3px #0489b1;
          }
 span{color: #ff2323;text-transform: uppercase;}
-#span_acesso{color: #0000ff;text-transform: uppercase;font-size:20px;margin-left: 10px;}
+#span_acesso{color: #0000ff;text-transform: uppercase;font-size:15px;margin-left: 10px;}
 label{margin: 2 0 0 20px;}
 
 #img_foto{
+        cursor: pointer;
         width:120px;
         height: 120px;
 	padding: 2px;
@@ -89,7 +129,7 @@ label{margin: 2 0 0 20px;}
 #col1{position: relative;float: left;width:48%}
 #col2{position: relative;float: right;width:48%}
 
-#flex_container{display:flex;margin-bottom: 5px;border-bottom: 1px solid #0489b1;height: 135px;}
+#flex_container{display:flex;margin-bottom: 5px;height: 135px;padding:5px;width: 95%;}
 
 #foto_resultado{padding:0 0 0 10px;}
 
@@ -137,6 +177,7 @@ h1{
     border-radius: 10px 10px 0 0;
    font-size: 35px;
    }
+h2{text-align: center;color: #3434ff;border-bottom: 1px solid #000000;}
 .main {
  display:none;
   position: absolute;
@@ -192,6 +233,7 @@ margin-left: 15%;
 .submit:hover{
 background: linear-gradient(#ffdd7f 5%, #ffbc00 100%);
 }
+
 #file {
 color: red;
 padding: 5px;
