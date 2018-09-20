@@ -24,6 +24,11 @@ $data_cadastro = date("Y-m-d");
 $obs= $_POST['obs'];
 $id = $_POST['input_id'];
 $connect = mysqli_connect('localhost','root','','portaria');
+    mysqli_query($connect,"SET NAMES 'utf8'");
+	mysqli_query($connect,"SET character_set_connection=utf8");
+	mysqli_query($connect,"SET character_set_client=utf8");
+	mysqli_query($connect,"SET character_set_results=utf8");
+	
 //$query_select = "SELECT rg FROM visitantes WHERE rg = '$rg'";
 //$select = mysqli_query($connect,$query_select);
 //$array = mysqli_fetch_array($select);
@@ -36,9 +41,9 @@ $connect = mysqli_connect('localhost','root','','portaria');
       $insert = mysqli_query($connect,$query);
          
         if($insert){
-          echo"<script language='javascript' type='text/javascript'>alert('Cadastrado com sucesso!');window.location.href='index.php'</script>";
+          echo"<script language='javascript' type='text/javascript'>alert('Cadastrado alterado com sucesso!');window.location.href='index.php'</script>";
         }else{
-          echo"<script language='javascript' type='text/javascript'>alert('N\u00e3o foi possível cadastrar esse usu&acute;rio');window.location.href='cadastro_visitantes.html'</script>";
+          echo"<script language='javascript' type='text/javascript'>alert('N\u00e3o foi possï¿½vel cadastrar esse usu&acute;rio');window.location.href='cadastro_visitantes.html'</script>";
         }
    
 mysqli_close($connect);

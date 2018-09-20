@@ -63,7 +63,9 @@
                      document.getElementById('input_foto').value = msg;
                     webcam.reset();
 
+                         document.getElementById('tirar_foto').style.display = 'none';
                 }
+
                 else {
 
                     alert("PHP Erro: " + msg);
@@ -88,7 +90,8 @@
                                                              document.getElementById('estado').disabled = false;
                                                                document.getElementById('empresa').disabled = false;
                                                                   document.getElementById('placa').disabled = false;     
-                                                                    }
+                                                                    document.getElementById('btn_apagar').disabled = false;
+                                                                        }
 
         </script>
 </head>
@@ -101,20 +104,24 @@
       <div id="mainnav">
            <ul>  			
 		<li><a href="index.php">In&iacute;cio</a></li>
-                <li><a href="cadastro_visitantes.html">Cadastrar visitante</a></li>  						
-							
+                <li><a href="cadastro_visitantes.html">Cadastrar visitante</a></li>  	
+                 <li><a href="bkp.php">Fazer backup</a></li>	
+                 <li><a href="ajuda.html">Ajuda</a></li>
 	    </ul>  	
        </div>
       </div>
 
  <?php
-           $chave = $_GET['chave'];
+           $chave = $_POST['chave'];
       date_default_timezone_set('America/Sao_Paulo');
               $connect = mysqli_connect('localhost','root','','portaria');
            mysqli_set_charset($connect,'utf8');
                 $query_select = "SELECT * FROM visitantes where rg = '$chave' or identificador = '$chave' or nome like '$chave%'";
                      $select = mysqli_query($connect,$query_select);
                       $valor = mysqli_fetch_assoc($select);
+                       if($valor == "" || $valor == null){
+                          echo"<script language='javascript' type='text/javascript'>alert('Registro n\u00e3o encontrado');history.back()</script>";
+                                                     }
         $data_dia = substr($valor['data_cadastro'],8,2);
           $data_mes = substr($valor['data_cadastro'],5,2);
             $data_ano = substr($valor['data_cadastro'],0,4);
@@ -157,12 +164,20 @@
             &nbsp;&nbsp;            <input type="button" value="Fechar" onClick="document.getElementById('tirar_foto').style.display = 'none';">
         </form>
       </div>
-  <div id="flex_container"><div id="foto_resultado"><img id="img_foto" src="<?php echo $valor['foto'];?>" width="120" height="120"></div>
-       <div style="margin-left:10px;">
-           <input type="button" value="Tirar foto" id="btn_foto" onClick="document.getElementById('tirar_foto').style.display = 'block'" disabled />
-             <input type="button" value="Carregar imagem" id="btn_carregar" onClick="document.getElementById('carrega_imagem').style.display = 'block';" disabled />
+  <div id="flex_container">
+     <div id="foto_resultado"><img id="img_foto" src="<?php echo $valor['foto'];?>" width="120" height="120">
                    </div> 
-                     <div style="margin-left: 10px;"><input type="button" value="Editar cadastro" onClick="habilita_edicao()" /></div>
+                     <div class="flex-child">
+                      <input type="button" value="Tirar foto" class="btn_submit" id="btn_foto" onClick="document.getElementById('tirar_foto').style.display = 'block'" disabled />
+                         <input type="button" value="Carregar imagem" class="btn_submit" id="btn_carregar" onClick="document.getElementById('carrega_imagem').style.display = 'block';" disabled />
+                            <input type="button" value="Editar cadastro" class="btn_submit" onClick="habilita_edicao()" />
+                             <input type="button" id="btn_alterar" value="Salvar as alterara&ccedil;&otilde;es" class="btn_submit" onClick="document.getElementById('form_cadastro').submit();" disabled /> 
+                               <input type="button" id="btn_apagar" value="! - Apagar este cadastro - !" class="btn_submit" onClick="document.getElementById('form_apagar').submit();" disabled /> 
+                                <form action="apagar_cadastro.php" method="post" id="form_apagar"> 
+                                  <input type="hidden" name="input_id" value="<?php echo $valor['id']; ?>" /> 
+                                         </form> 
+
+                         </div>
                     </div>
   <fieldset><legend>Cadastro de visitantes</legend>
    <div id="form">
@@ -181,12 +196,11 @@
                        <label for="cidade">Cidade</label><input type="text" id="cidade" name="cidade" value="<?php echo $valor['cidade'];?>"disabled />
                          <label for="estado">Estado</label><input type="text" id="estado" name="estado" value="<?php echo $valor['estado'];?>"disabled />
                              <label for="empresa">Empresa</label><input type="text" id="empresa" name="empresa" value="<?php echo $valor['empresa'];?>" disabled />
-                                <label for="placa">Placa</label><input type="text" id="placa" name="placa" value="<?php echo $valor['placa'];?>" disabled />  
+                                <label for="placa">Placa</label><input type="text" id="placa" name="placa" value="<?php echo $valor['placa'];?>" disabled style="text-transform:uppercase;" />  
           </div>
               <input type="hidden" name="input_foto" id="input_foto" value="<?php echo $valor['foto'];?>">
                  <input type="hidden" name="input_id" id="input_id" value="<?php echo $valor['id'];?>">
-                 <input type="submit" id="btn_alterar" value="Alterar Cadastro" disabled />
-                   </form><input type="button" id="btn_apagar" value="Apagar Cadastro" />
+                </form>
    </div>
   </div>
   </fieldset>

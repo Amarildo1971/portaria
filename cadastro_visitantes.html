@@ -62,6 +62,7 @@
                      document.getElementById('input_foto').value = msg;
                     webcam.reset();
 
+                       document.getElementById('tirar_foto').style.display = 'none';
                 }
                 else {
 
@@ -119,15 +120,18 @@
    <div id="header">
       <div id="mainnav">
       <ul>  			
-		<li><a href="index.php">In&iacute;cio</a></li>  			
-		<li><a href="cadastro_visitantes.html">Cadastrar vistante</a></li> 					
+		<li><a href="index.php">In&iacute;cio</a></li>
+                <li><a href="cadastro_visitantes.html">Cadastrar visitante</a></li>  	
+                 <li><a href="bkp.php">Fazer backup</a></li>	
+                 <li><a href="ajuda.html">Ajuda</a></li>					
 	</ul> 
         </div>
                </div>
- <div id="flex_container"><div id="foto_resultado"><img id="img_foto" src="imagens/imagem.jpg" width="120" height="120"></div>
+ <div id="flex_container"><div id="foto_resultado"><img id="img_foto" src="imagens/imagem.jpg" width="120" height="120" onClick="document.getElementById('tirar_foto').style.display = 'block';"></div>
        <div style="margin-left:10px;">
-           <input type="button" value="Tirar foto" onClick="document.getElementById('tirar_foto').style.display = 'block'">
+           <input type="button" value="Tirar foto" onClick="document.getElementById('tirar_foto').style.display = 'block';">
              <input type="button" value="Carregar imagem" onClick="document.getElementById('carrega_imagem').style.display = 'block';">
+               <input type="submit" value="Cadastrar" onClick="document.forms['form_cadastro'].submit()">
                  </div>
                     </div>
   <fieldset><legend>Cadastro de visitantes</legend>
@@ -147,10 +151,9 @@
                        <label for="cidade">Cidade</label><input type="text" id="cidade" name="cidade">
                          <label for="estado">Estado</label><input type="text" id="estado" name="estado">
                              <label for="empresa">Empresa</label><input type="text" id="empresa" name="empresa">
-                                <label for="placa">Placa</label><input type="text" id="placa" name="placa">  
+                                <label for="placa">Placa</label><input type="text" id="placa" name="placa" style="text-transform: uppercase;">  
           </div>
               <input type="hidden" name="input_foto" id="input_foto" value="">
-            <input type="submit" value="Cadastrar">
      </form>
    </div>
   </div>
