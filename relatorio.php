@@ -19,10 +19,16 @@
 
     <body>
 
+<?php
+$data_inicial = $_POST['data_inicio'];
+$data_final = $_POST['data_fim'];
+?>
+
 <div><h1>Relat&oacute;rio de acessos</h1></div>
 <div style="margin: 0 auto;width: 85%;border-top: 1px solid #323232;">
 <table cellspacing="10">
    <tr>
+    <th>Imagem</th>
      <th>DATA</th>
        <th>HORA</th>
          <th>NOME</th>
@@ -30,9 +36,6 @@
             <th>AUTORIZA&Ccedil;&Atilde;O</th>
       </tr>
 <?php
-$data_inicial = date('Y-m-d', strtotime($_POST['data_inicio']));
-$data_final = date('Y-m-d', strtotime($_POST['data_fim'])); 
-
  date_default_timezone_set('America/Sao_Paulo');
               $connect = mysqli_connect('localhost','root','','portaria');
            mysqli_set_charset($connect,'utf8');
@@ -45,6 +48,7 @@ $data_final = date('Y-m-d', strtotime($_POST['data_fim']));
               $hora = $valor['hora']; 
                 $foto = $valor['foto']; 
        echo "<tr>";  
+         echo "<td><img src='".$foto."' width=60 height=70></td>";
             echo "<td>".$data_dia."/".$data_mes."/".$data_ano."</td>";
                echo "<td>".$hora."</td>";
               echo "<td>".$valor['nome']."</td>";
@@ -56,6 +60,6 @@ $data_final = date('Y-m-d', strtotime($_POST['data_fim']));
           ?>        	
 </table>
 </div>
-<br />
+<div style="text-align: right;padding-right: 10px;"> Per&iacute;odo: <?php echo $data_inicial; ?> &aacute;  <?php echo $data_final; ?></div>
 <center><input type="button" id="btn_print" value="Imprimir" onClick="printe();"</center>
 </body></html>
