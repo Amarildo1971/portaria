@@ -26,7 +26,7 @@ move_uploaded_file($sourcePath,$targetPath) ; // Moving Uploaded file
 //echo "<b>Type:</b> " . $_FILES["file"]["type"] . "<br>";
 //echo "<b>Size:</b> " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
 //echo "<b>Temp file:</b> " . $_FILES["file"]["tmp_name"] . "<br>";
-echo "http://".$_SERVER['HTTP_HOST']."/".$targetPath;
+echo "http://".$_SERVER['HTTP_HOST']."/www/".$targetPath;
 
 }
 }

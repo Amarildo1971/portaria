@@ -1,22 +1,29 @@
-﻿body { 
+﻿@font-face {
+     font-family: 'Montserrat';
+     src: local('Montserrat-Medium.ttf');
+     src: url('../fonts/Montserrat-Medium.ttf') format('truetype');
+}
+body { 
    display: block;
    margin: 0;
    color: #323232;
-  
-}
+     }
+
+select{margin: 5px;}
 
 body:focus { 
     outline: none;
 }
 
-table{border-collapse: collapse;width: 100%;font-size: 20px;color: #3434ff;}
-  td {text-align: left;padding: 8px;}
+table{border-collapse: collapse;width: 100%;font-size: 16px;margin: 10px;font-family: Montserrat;}
+  td {text-align: left;padding: 10px;}
   tr:nth-child(even){background-color: #eeeeee;}
 input[type=date]{display: block;margin: 0 0 8px 2px; border: 1px solid; border-radius: 2px;-moz-border-radius: 2px;-webkit-border-radius: 2px;}
 input[type=time]{display: block;margin: 0 0 8px 2px; border: 1px solid; border-radius: 2px;-moz-border-radius: 2px;-webkit-border-radius: 2px;}
 input[type=text]{
                  width: 95%;
                  height: 25px;
+                 font-family: Montserrat;
                  margin: 0 0 8px 2px;
                  display: block;
                  border: 1px solid;
@@ -26,8 +33,8 @@ input[type=text]{
                  box-shadow: 1px 1px 2px #0489b1;    
                  -moz-box-shadow: 1px 1px 2px #0489b1;
                  -webkit-box-shadow: 1px 1px 2px #0489b1; 
-      
-                }
+                 }
+
 input[type=text]:hover, textarea:hover{ 
          background: #eeeeff; 
                                        }
@@ -46,6 +53,7 @@ input[type=text]:hover, textarea:hover{
 .btn_submit{
  font-size: small;
   background: #0489b1;
+    font-family: Montserrat;
    color: #eeeeee;
   font-weight: bold;
  cursor: pointer;
@@ -60,27 +68,28 @@ background: #0000ff;
        margin-left:5px;
        padding: 5px;
                }
+ .div_botoes{
+            text-align: center;
+             width: 100%;
+              }
 
-  #div_es{
-            padding:  0 10px 0 10px;
-             border-radius: 5px;
-           position: absolute; /* posição absoluta ao elemento pai, neste caso o BODY */
-        /* Posiciona no meio, tanto em relação a esquerda como ao topo */
+  .div_central{
+        font-family: Montserrat;
+        padding:  0 10px 0 10px;
+        border-radius: 5px;
+        position: absolute; 
         display:none;
         left: 50%; 
         top: 50%;
         width: 300px; /* Largura da DIV */
         height: 240px; /* Altura da DIV */
-        /* A margem a esquerda deve ser menos a metade da largura */
-        /* A margem ao topo deve ser menos a metade da altura */
-        /* Fazendo isso, centralizará a DIV */
         margin-left: -150px;
         margin-top: -125px;
         color: #222;
-        border: 8px solid #323232;
+        border: 5px solid #323232;
         text-align: center; /* Centraliza o texto */
         z-index: 1000; /* Faz com que fique sobre todos os elementos da página */
-        background: #eeeeee;
+        background: #ced8f6;
              }
 
 #tirar_foto{
@@ -136,6 +145,7 @@ label{margin: 2 0 0 20px;}
 #container{}
 
 #mainnav {
+        font-family: Montserrat;
 	color: #ffffff;
 	padding: 2px 0;
 	margin-bottom: 10px;
@@ -154,6 +164,12 @@ label{margin: 2 0 0 20px;}
 	border-right: 1px solid #ffffff;
 	}
 
+#mainnav li:last-child {
+	float: right;
+        padding-right: 10px;
+        border: none;
+	}
+
 #mainnav li a {
 	text-decoration: none;
 	color: #ffffff;
@@ -169,7 +185,7 @@ label{margin: 2 0 0 20px;}
         }
 h1{
   text-align: center;
-   background-color: #FEFFED;
+   background-color: #fefefe;
     height: 70px;
      color: rgb(95, 89, 89);
       margin: 0 0 -29px 0;
@@ -177,7 +193,9 @@ h1{
     border-radius: 10px 10px 0 0;
    font-size: 35px;
    }
+
 h2{text-align: center;color: #3434ff;border-bottom: 1px solid #000000;}
+
 .main {
  display:none;
   position: absolute;
